@@ -1,10 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import PropTypes from 'prop-types';
+
 
 const PagesToRead = () => {
-
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
     const checkData = JSON.parse(localStorage.getItem('read') || "[]");
@@ -54,14 +52,13 @@ const PagesToRead = () => {
         </div>
     );
 };
+PagesToRead.propTypes={
+    fill:PropTypes.any.isRequired,
+    x:PropTypes.any.isRequired,
+    y:PropTypes.any.isRequired,
+    width:PropTypes.any.isRequired,
+    height:PropTypes.any.isRequired
+}
+
 
 export default PagesToRead;
-
-
-PagesToRead.propTypes = {
-    fill: PropTypes.any.isRequired,
-    x: PropTypes.any.isRequired,
-    y: PropTypes.any.isRequired,
-    width: PropTypes.any.isRequired,
-    height: PropTypes.any.isRequired
-}

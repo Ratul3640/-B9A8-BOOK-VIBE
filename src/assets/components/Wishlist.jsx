@@ -1,9 +1,9 @@
-import React from 'react';
-import { IoLocationOutline } from 'react-icons/io5';
-import { MdOutlineRestorePage } from 'react-icons/md';
-import { SlPeople } from 'react-icons/sl';
 
+import { IoLocationOutline } from "react-icons/io5";
+import { SlPeople } from "react-icons/sl";
+import { MdOutlineRestorePage } from "react-icons/md";
 const Wishlist = () => {
+
     const wishData = JSON.parse(localStorage.getItem('wish') || '[]');
     console.log(wishData)
     return (

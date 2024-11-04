@@ -1,11 +1,13 @@
-import React from 'react';
+
 import { IoLocationOutline } from "react-icons/io5";
 import { SlPeople } from "react-icons/sl";
 import { MdOutlineRestorePage } from "react-icons/md";
 
 const ReadBooks = () => {
+
     const checkData = JSON.parse(localStorage.getItem('read') || "[]");
     console.log(checkData)
+
     return (
         <div>
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
 
 const Banner = () => {
-    return (
+    return ( 
         <div className="hero lg:h-[500px] h-full bg-base-200 rounded-lg">
             <div className="hero-content flex-col lg:flex-row-reverse rounded-lg">
                 <img src={'https://i.ibb.co/zsDgZkN/pngwing-1-removebg-preview.png'} className="max-w-sm rounded-lg " />

@@ -1,9 +1,12 @@
-import { FaRegStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { FaRegStar } from "react-icons/fa";
 import PropTypes from 'prop-types';
 
+
 const Cards = ({ book }) => {
-    const { bookId, image, tags, bookName, author, category, rating } = book;
+    // console.log(book);
+    const {bookId, image, tags, bookName, author, category, rating } = book;
+
     return (
         <div>
             <Link to={`/book/${bookId}`} className="card  bg-base-100 shadow-xl hover:border-2 border-[#23BE0A]">
@@ -33,10 +36,13 @@ const Cards = ({ book }) => {
 
         </div>
     );
+
+
 };
 
-export default Cards;
-
-Cards.propTypes = {
+Cards.propTypes={
     book: PropTypes.object,
 }
+
+
+export default Cards;

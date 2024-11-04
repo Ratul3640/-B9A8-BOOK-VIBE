@@ -1,10 +1,8 @@
-import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 
-
-const MainLayOut = () => {
+const MainLayout = () => {
     return (
         <div className="container mx-auto ">
 
@@ -14,10 +12,10 @@ const MainLayOut = () => {
             <div className="min-h-[calc(100vh-80px)]">
                 <Outlet></Outlet>
             </div>
-
+           
 
         </div>
     );
 };
 
-export default MainLayOut;
+export default MainLayout;

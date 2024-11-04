@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Book = () => {
-
-
     const books = useLoaderData()
+
     const { id } = useParams();
-    const book = books.find(i => id.bookId == id)
+
+    const book = books.find(i => i.bookId == id);
+
+
 
     const { bookName, image, author, tags, totalPages, publisher, yearOfPublishing, rating, review } = book;
-
 
 
     const handleRead = () => {
@@ -36,34 +36,28 @@ const Book = () => {
         }
     }
 
-
-
     const handleWish = () => {
         const wishData = JSON.parse(localStorage.getItem('wish') || '[]');
         const findReadData = JSON.parse(localStorage.getItem('read') || '[]');
         const matchData = wishData.find(f => f.bookId == book.bookId);
-        const readData = findReadData.find(f => f.bookId == book.bookId);
-        if (readData) {
+        const readData= findReadData.find(f => f.bookId == book.bookId);
+        if(readData){
             toast.warning("This book has been read !");
         } else {
-            if (matchData) {
-                toast.warning("This book already added in your wishlist !");
-            }
-            else {
-                wishData.push(book);
-                localStorage.setItem('wish', JSON.stringify(wishData));
-                toast.success("Successfully Wishlist", {
-                    theme: "colored"
-                })
+        if(matchData){
+            toast.warning("This book already added in your wishlist !");
+        }
+        else{
+            wishData.push(book);
+            localStorage.setItem('wish', JSON.stringify(wishData));
+            toast.success("Successfully Wishlist", {
+                theme: "colored"
+            })
 
-            }
         }
     }
+    }
 
-
-
-
-    
     return (
         <div className="hero  bg-base-200 ">
             <div className="hero-content flex-col lg:flex-row w-full justify-between">
@@ -78,7 +72,7 @@ const Book = () => {
                     <p className="text-[#131313CC] text-opacity-80 font-medium text-xl mb-5">By. {author}</p>
                     <p className="border-2 mb-4"></p>
 
-                    <p className="text-[#131313B3] text-opacity-70 font-base font-normal"> <span className="text-[#131313] font-bold ">Review :</span> {MdReviews}</p>
+                    <p className="text-[#131313B3] text-opacity-70 font-base font-normal"> <span className="text-[#131313] font-bold ">Review :</span> {review}</p>
 
                     <div className="lg:mt-12 mt-6 flex gap-2 mb-5">
                         <p className="text-[#131313] font-bold text-base">Tags</p>
