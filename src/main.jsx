@@ -1,41 +1,74 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+// import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
-import Root from './Components/Root.jsx/Root';
-import Home from './Components/Root.jsx/Home/Home';
-import Book from './Components/Books/Book';
+}
+  from "react-router-dom";
+
+
+import MainLayOut from './mainlayOut.jsx/MainLayOut';
+
+import { BiBook } from 'react-icons/bi';
+
+import Wishlist from './Components/Wishlist/Wishlist';
 import PagesToRead from './Components/PagesToRead/PagesToRead';
+import ReadBooks from './Components/ReadBooks/ReadBooks';
+import Home from './Components/Home/Home';
+
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Root></Root>,
+    path: '/',
+    element: <MainLayOut></MainLayOut>,
     children: [
       {
         path: '/',
-        element: <Home></Home>,
+        element: <Home></Home>
       },
       {
-        path: '/book:id',
-        element: <Book></Book>,
+        path: '/book/:id',
+        element: <BiBook></BiBook>,
         loader: () => fetch('/Books.json')
+
       },
       {
         path: '/pagetoread',
         element: <PagesToRead></PagesToRead>,
+
       },
+
       {
-        
+        path: '/listedbooks',
+        element: <ReadBooks></ReadBooks>,
+        children: [
+
+          {
+            path: 'wishlist',
+            element: <Wishlist></Wishlist>,
+            loader: () => fetch('Books.json'),
+          },
+          {
+            path: 'readlist',
+            element: <ReadBooks></ReadBooks>
+
+          },
+          {
+            path: 'wishlist',
+            element: <Wishlist></Wishlist>
+
+          }
+        ]
       }
+
     ]
+
   },
 ]);
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </React.StrictMode>,
 )

@@ -2,7 +2,8 @@ import { FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Cards = () => {
+const Cards = ({ book }) => {
+    const { bookId, image, tags, bookName, author, category, rating } = book;
     return (
         <div>
             <Link to={`/book/${bookId}`} className="card  bg-base-100 shadow-xl hover:border-2 border-[#23BE0A]">
